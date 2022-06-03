@@ -30,7 +30,7 @@ CFLAGS=-g -Wall
 
 TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
 	bin/pointerToStaticData bin/charArraysAndStrings bin/fileIO \
-	bin/handles bin/bitShift
+	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings
 
 all: ${TARGETS}
 
@@ -43,9 +43,22 @@ bin/pointers: bin/pointers.o
 bin/pointers.o: src/pointers.c
 	${CC} ${CFLAGS} -o bin/pointers.o -c src/pointers.c
 
+bin/structExample: bin/structExample.o 
+	${CC} ${CFLAGS} -o bin/structExample bin/structExample.o 
+	
+bin/structExample.o: src/structExample.c
+	${CC} ${CFLAGS} -o bin/structExample.o -c src/structExample.c
+
 bin/charArraysAndStrings: bin/charArraysAndStrings.o
 	${CC} ${CFLAGS} -o bin/charArraysAndStrings bin/charArraysAndStrings.o
+
+bin/structExampleWithStrings: bin/structExampleWithStrings.o 
+	${CC} ${CFLAGS} -o bin/structExampleWithStrings bin/structExampleWithStrings.o 
 	
+bin/structExampleWithStrings.o: src/structExampleWithStrings.c
+	${CC} ${CFLAGS} -o bin/structExampleWithStrings.o -c src/structExampleWithStrings.c
+
+
 bin/charArraysAndStrings.o: src/charArraysAndStrings.c
 	${CC} ${CFLAGS} -o bin/charArraysAndStrings.o -c src/charArraysAndStrings.c
 
