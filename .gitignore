@@ -1,0 +1,7 @@
+**/vgcore.*
+**/core*
+**/*.out
+**/*.err
+bin/*.o
+bin/main
+**/*.pdf
