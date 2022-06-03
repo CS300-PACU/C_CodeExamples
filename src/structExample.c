@@ -49,6 +49,8 @@ void readPoint(PointData *psPoint)
   // scanf is a way to read non-string data 
   // from the keyboard
   //
+  // the & takes the address of the member (x or y)
+  //
   // Note the -> is because psPoint is a pointer
 
   printf("X: ");
