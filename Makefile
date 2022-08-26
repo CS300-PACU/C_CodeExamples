@@ -30,7 +30,8 @@ CFLAGS=-g -Wall
 
 TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
 	bin/pointerToStaticData bin/charArraysAndStrings bin/fileIO \
-	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings
+	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings \
+	bin/examstats
 
 all: ${TARGETS}
 
@@ -57,7 +58,6 @@ bin/structExampleWithStrings: bin/structExampleWithStrings.o
 	
 bin/structExampleWithStrings.o: src/structExampleWithStrings.c
 	${CC} ${CFLAGS} -o bin/structExampleWithStrings.o -c src/structExampleWithStrings.c
-
 
 bin/charArraysAndStrings.o: src/charArraysAndStrings.c
 	${CC} ${CFLAGS} -o bin/charArraysAndStrings.o -c src/charArraysAndStrings.c
@@ -102,11 +102,17 @@ bin/bitShift: bin/bitShift.o
 bin/bitShift.o: src/bitShift.c
 	${CC} ${CFLAGS} -o bin/bitShift.o -c src/bitShift.c
 
+bin/examstats: bin/examstats.o 
+	${CC} ${CFLAGS} -o bin/examstats bin/examstats.o 
+	
+bin/examstats.o: src/examstats.c
+	${CC} ${CFLAGS} -o bin/examstats.o -c src/examstats.c
+
 clean:
-	rm -rf bin/*.o ${TARGETS} 
+	rm -rf bin/*.o ${TARGETS} bin/*.pdf
 
-valgrind: bin/main
-	valgrind -v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all bin/main
+valgrind: bin/examstats
+	valgrind -v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all bin/examstats
 
-printMain:
-	enscript -C -T 2 -p - -M Letter -Ec --color -fCourier8 src/main.c  | ps2pdf - bin/main.pdf
+printexamstats:
+	enscript -C -T 2 -p - -M Letter -Ec --color -fCourier8 src/examstats.c  | ps2pdf - bin/examstats.pdf
