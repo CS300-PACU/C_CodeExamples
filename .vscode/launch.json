@@ -5,11 +5,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(gdb) Launch with args", // Change name
+      "name": "(gdb) Pointers", // Change name
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/bin/main", // THIS IS IMPORTANT
-      "args": ["64.59.225.81", "/chadd/cs360f21/LabHttp.html"], // add comma separated list of args here.
+      "program": "${workspaceFolder}/bin/pointers", // THIS IS IMPORTANT
+      "args": [], // add comma separated list of args here.
       "stopAtEntry":  true, // THIS IS IMPORTANT 
       "cwd": "${workspaceFolder}",
       "environment": [],
