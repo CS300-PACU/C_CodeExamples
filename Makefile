@@ -31,12 +31,18 @@ CFLAGS=-g -Wall
 TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
 	bin/pointerToStaticData bin/charArraysAndStrings bin/fileIO \
 	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings \
-	bin/examstats
+	bin/examstats bin/commandLineArgs
 
 all: ${TARGETS}
 
 bin:
 	mkdir -p bin
+
+bin/commandLineArgs: bin/commandLineArgs.o 
+	${CC} ${CFLAGS} -o bin/commandLineArgs bin/commandLineArgs.o 
+	
+bin/commandLineArgs.o: src/commandLineArgs.c
+	${CC} ${CFLAGS} -o bin/commandLineArgs.o -c src/commandLineArgs.c
 
 bin/pointers: bin/pointers.o 
 	${CC} ${CFLAGS} -o bin/pointers bin/pointers.o 
