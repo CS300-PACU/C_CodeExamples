@@ -35,6 +35,12 @@ int main (int argc, char *argv[]) {
   int intArg;
   bool bIsNumber;
 
+  // check if any arguments are given
+  if ( 1 == argc)
+  {
+    printf("No command line arguments given!\n\n");
+  }
+
   // print each command line argument as a string
   for (int i = 0; i < argc; ++i) {
     printf("argv[%d] = \'%s\'\n", i, argv[i]);
