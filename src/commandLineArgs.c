@@ -27,6 +27,8 @@
 
 int main (int argc, char *argv[]) {
 
+  // https://github.com/CS300-PACU/C_CodeExamples
+  
   // sometimes the parameters are written as:
   // int main (int argc, char **argv) 
   // Why are these two definitions equivalent?
