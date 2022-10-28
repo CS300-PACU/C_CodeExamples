@@ -11,6 +11,7 @@
 
 CC=gcc
 CFLAGS=-g -Wall
+VALGRIND_FLAGS=-v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all
 
 # -g  include debug symbols in the executable so that the code can be
 # 		run through the debugger effectively
@@ -31,12 +32,18 @@ CFLAGS=-g -Wall
 TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
 	bin/pointerToStaticData bin/charArraysAndStrings bin/fileIO \
 	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings \
-	bin/examstats bin/commandLineArgs
+	bin/examstats bin/commandLineArgs bin/resizeArray
 
 all: ${TARGETS}
 
 bin:
 	mkdir -p bin
+
+bin/resizeArray: bin/resizeArray.o 
+	${CC} ${CFLAGS} -o bin/resizeArray bin/resizeArray.o 
+	
+bin/resizeArray.o: src/resizeArray.c
+	${CC} ${CFLAGS} -o bin/resizeArray.o -c src/resizeArray.c
 
 bin/commandLineArgs: bin/commandLineArgs.o 
 	${CC} ${CFLAGS} -o bin/commandLineArgs bin/commandLineArgs.o 
@@ -118,7 +125,10 @@ clean:
 	rm -rf bin/*.o ${TARGETS} bin/*.pdf
 
 valgrind: bin/examstats
-	valgrind -v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all bin/examstats
+	valgrind ${VALGRIND_FLAGS} bin/examstats
 
 printexamstats:
 	enscript -C -T 2 -p - -M Letter -Ec --color -fCourier8 src/examstats.c  | ps2pdf - bin/examstats.pdf
+
+valgrindresizeArray: bin/resizeArray
+	valgrind ${VALGRIND_FLAGS} bin/resizeArray
