@@ -5,6 +5,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "lldb",
+      "request": "launch",
+      "name": "lldb - command line args",
+      "program": "${workspaceFolder}/bin/commandLineArgs",
+      "args": ["hello", "1", "-c", "bye"],
+      "cwd": "${workspaceFolder}"
+    },
+    {
       "name": "(gdb) Pointers", // Change name
       "type": "cppdbg",
       "request": "launch",
