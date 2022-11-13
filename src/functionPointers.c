@@ -10,8 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// define a function pointer type
 typedef void(*intFunc)(int);
 
+// a struct that contains function pointers
 typedef struct HoldFP {
 	intFunc pPrint;
 	intFunc pSum;
@@ -107,6 +109,7 @@ int main () {
 
 	HoldFP sFPs;
 
+	// store function pointers in a struct
 	sFPs.pPrint = printInt;
 	sFPs.pSum = sumInt;
 
