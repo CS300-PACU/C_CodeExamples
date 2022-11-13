@@ -50,7 +50,7 @@ void sumInt (int value) {
 /****************************************************************************
  Function:    visitInts
 
- Description: Visit each int in the array and all pFunc on that int
+ Description: Visit each int in the array and call pFunc on that int
  
  Parameters:  pFunc - the function to call on each int
 							array - the array of ints
@@ -95,6 +95,36 @@ void sumInts(HoldFP sFPs, int array[], int size) {
 }
 
 /****************************************************************************
+ Function:    incrInt
+
+ Description: increment the int parameter by one
+
+ Parameters:  value - the int to incr
+
+ Returned:    none
+ ****************************************************************************/
+void incrInt (int *pValue) {
+		(*pValue) ++;
+}
+
+/****************************************************************************
+ Function:    editInts
+
+ Description: Visit each int in the array and call pFunc on that int
+ 
+ Parameters:  pFunc - the function to call on each int
+							array - the array of ints
+							size - the size of the array
+
+ Returned:    none
+ ****************************************************************************/
+void editInts(void (*pFunc)(int*), int array[], int size) {
+	for (int i=0; i< size; ++i) {
+		(*pFunc) (&array[i]);
+	}
+}
+
+/****************************************************************************
  Function:    main
 
  Description: demonstrate function pointers
@@ -109,6 +139,9 @@ int main () {
 
 	HoldFP sFPs;
 
+	// array of function pointers
+	intFunc fpArray[] = {printInt, sumInt};
+
 	// store function pointers in a struct
 	sFPs.pPrint = printInt;
 	sFPs.pSum = sumInt;
@@ -116,11 +149,21 @@ int main () {
 	printf("CALL visitInts\n");
 	visitInts(printInt, array, SIZE);
 
-	printf("\n\nCALL printInts\n");
+	printf("\n\nCALL editInts\n");
+	editInts(incrInt, array, SIZE);
+
+	printf("\nCALL printInts\n");
 	printInts(sFPs, array, SIZE);
 
 	printf("\n\nCALL sumInts\n");
 	sumInts(sFPs, array, SIZE);
+	printf("gSum: %d\n", gSum);
+
+	printf("\nCall printInt(300) via array\n");
+	(*fpArray[0])(300);
+
+	printf("\n\nCall sumInt(300) via array\n");
+	(*fpArray[1])(300);
 	printf("gSum: %d\n", gSum);
 
 	return EXIT_SUCCESS;
