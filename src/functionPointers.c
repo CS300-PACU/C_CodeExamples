@@ -12,6 +12,9 @@
 
 // define a function pointer type
 typedef void(*intFunc)(int);
+// type name: intFunc
+// return type of function: void
+// parameter list of function: (int)
 
 // a struct that contains function pointers
 typedef struct HoldFP {
