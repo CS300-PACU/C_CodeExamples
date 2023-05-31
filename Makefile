@@ -19,8 +19,7 @@ ENSCRIPT_FLAGS=-C -T 2 -p - -M Letter -Ec --color -fCourier8
 #
 # -Wall	show all warnings from gcc
 
-
-.PHONY: clean all
+.PHONY: clean
 
 # TARGETS is used below to hold the name of all the executables
 # built by this Makefile.  This allows us to add the executable name
@@ -36,7 +35,7 @@ TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
 	bin/examstats bin/commandLineArgs bin/resizeArray bin/functionPointers \
 	bin/helloworld
 
-all: ${TARGETS}
+all: bin ${TARGETS}
 
 bin:
 	mkdir -p bin
@@ -46,7 +45,7 @@ bin:
 bin/%: bin/%.o
 	gcc -o $@ -g -Wall $^
 
-bin/%.o: src/%.c bin
+bin/%.o: src/%.c
 	gcc -c -o $@ -g -Wall $<
 
 
@@ -68,3 +67,7 @@ printexamstats:
 
 valgrindresizeArray: bin/resizeArray
 	valgrind ${VALGRIND_FLAGS} bin/resizeArray
+
+# https://www.gnu.org/software/make/manual/html_node/Chained-Rules.html
+# https://www.gnu.org/software/make/manual/html_node/Special-Targets.html
+.PRECIOUS: bin/%.o
