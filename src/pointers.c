@@ -32,7 +32,7 @@ void printIt (int *pInt, int size)
 		/* Notice that the pointer notation, pInt[i], is much more
 		 * concise and clear than the pointer arithmetic, *(pInt + i).
 		 */
-		printf ("%p %d %d \n", (void*) (pInt + i),
+		printf ("printIt: %p %d %d \n", (pInt + i),
 		pInt[i], *(pInt + i));
 	}
 	return;
