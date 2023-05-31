@@ -59,11 +59,12 @@ void arrayTest(int value)
 }
 
 
+// all the function and main to see the same constants
+
 // use an enum to create related
 // constants
 typedef enum {NO_ERROR = 0, ERROR = -1} ERROR_CODE;
 
-// all the function and main to see the same constant
 #define CAUSE_ERROR 7
 
 /****************************************************************************
