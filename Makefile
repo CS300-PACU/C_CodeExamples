@@ -32,12 +32,20 @@ VALGRIND_FLAGS=-v --leak-check=yes --track-origins=yes --leak-check=full --show-
 TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
 	bin/pointerToStaticData bin/charArraysAndStrings bin/fileIO \
 	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings \
-	bin/examstats bin/commandLineArgs bin/resizeArray bin/functionPointers
+	bin/examstats bin/commandLineArgs bin/resizeArray bin/functionPointers \
+	bin/helloworld
 
 all: ${TARGETS}
 
 bin:
 	mkdir -p bin
+
+bin/helloworld: bin/helloworld.o 
+	${CC} ${CFLAGS} -o bin/functionPointers bin/functionPointers.o 
+	
+bin/helloworld.o: src/helloworld.c
+	${CC} ${CFLAGS} -o bin/helloworld.o -c src/helloworld.c
+
 
 bin/functionPointers: bin/functionPointers.o 
 	${CC} ${CFLAGS} -o bin/functionPointers bin/functionPointers.o 
