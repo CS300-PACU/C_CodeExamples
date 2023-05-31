@@ -31,12 +31,8 @@ int main ()
 	 * in pValue
 	 */
 
-	// %lx means: unsigned long int printed in hexadecimal
-	// why is a pointer equivalent to an unsigned long int?
-	printf ("%lx %lx\n", (unsigned long int) &value, (unsigned long int) pValue);
-
-	// %p means pointer (must be void *)
-	printf ("%p %p\n", (void*) &value, (void*) pValue);
+	// %p means pointer 
+	printf ("%p %p\n", &value,  pValue);
 
 	return EXIT_SUCCESS;
 }
