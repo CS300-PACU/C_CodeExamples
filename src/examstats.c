@@ -1,5 +1,5 @@
 /*******************************************************************************
- File name:  main.c
+ File name:  examstats.c
  Author:     Computer Science, Pacific University
  Date:			 8/30/17
  Class:      CS300
