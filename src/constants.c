@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-// const int ARRAY_SIZE = 11; // causes errors on lines 17, 18, 32
+// const int ARRAY_SIZE = 11; // causes errors on lines below
 #define ARRAY_SIZE 11
 
 typedef int ARRAY_TYPE[ARRAY_SIZE];
@@ -33,8 +33,6 @@ void arrayTest(int value)
 	int array[SIZE];
 	ARRAY_TYPE anArray;
 	int index;
-
-	anArray[0] = 9;
 
 	// Don't use a constant for 0 or 1
 	// unless it has specific meaning
@@ -59,7 +57,7 @@ void arrayTest(int value)
 }
 
 
-// all the function and main to see the same constants
+// allow the function and main to see the same constants
 
 // use an enum to create related
 // constants
