@@ -32,7 +32,7 @@ int main ()
 	 */
 
 	// %p means pointer 
-	printf ("%p %p\n", &value,  pValue);
+	printf ("%p %p %p\n", &value,  pValue, &pValue);
 
 	return EXIT_SUCCESS;
 }
