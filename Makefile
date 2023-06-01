@@ -43,10 +43,10 @@ bin:
 # Automatically generate rules
 # https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 bin/%: bin/%.o
-	gcc -o $@ -g -Wall $^
+	gcc -o $@ ${CFLAGS} $^
 
 bin/%.o: src/%.c
-	gcc -c -o $@ -g -Wall $<
+	gcc -c -o $@ ${CFLAGS} $<
 
 
 # Custom rules
