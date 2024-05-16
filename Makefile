@@ -33,7 +33,7 @@ TARGETS=bin/pointers bin/pointersWorksheet  bin/pointersTest \
 	bin/pointerToStaticData bin/charArraysAndStrings bin/fileIO \
 	bin/handles bin/bitShift bin/structExample  bin/structExampleWithStrings \
 	bin/examstats bin/commandLineArgs bin/resizeArray bin/functionPointers \
-	bin/helloworld bin/constants
+	bin/helloworld bin/constants bin/C_Strings_1 bin/C_Strings_2
 
 all: bin ${TARGETS}
 

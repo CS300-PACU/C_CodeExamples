@@ -54,7 +54,7 @@ int main ()
 
 	/*
 	 * The following code, setting charArray[3] to '!',
-	 * causes and error.  The null terminator is removed
+	 * causes an error.  The null terminator is removed
 	 * from the string charArray and printf does not know
 	 * when to stop printing characters.
 	 */
