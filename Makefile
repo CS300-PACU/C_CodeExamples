@@ -9,7 +9,7 @@
 #############################################################################
 
 
-CC=gcc
+CC=clang
 CFLAGS=-g -Wall
 VALGRIND_FLAGS=-v --leak-check=yes --track-origins=yes --leak-check=full --show-leak-kinds=all
 ENSCRIPT_FLAGS=-C -T 2 -p - -M Letter -Ec --color -fCourier8
@@ -43,10 +43,10 @@ bin:
 # Automatically generate rules
 # https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html
 bin/%: bin/%.o
-	gcc -o $@ ${CFLAGS} $^
+	${CC} -o $@ ${CFLAGS} $^
 
 bin/%.o: src/%.c
-	gcc -c -o $@ ${CFLAGS} $<
+	${CC} -c -o $@ ${CFLAGS} $<
 
 
 # Custom rules

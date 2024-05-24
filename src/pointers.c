@@ -54,6 +54,15 @@ void updateInt (int *pInt)
 	printf ("Double (in function): %d\n", *pInt);
 }
 
+void foo(int arr[], int len,	char *str)
+{
+  for(int index = 0; index < len ; index ++)
+  {
+			printf("%d\t", arr[index]);
+  }
+ 	printf("%s\n", str);
+}
+
 /****************************************************************************
  Function:    main
  Description: Declares a static array and calls printIt.
@@ -71,6 +80,9 @@ int main ()
 
 	updateInt (&getDouble);
 	printf ("Double (in main): %d\n", getDouble);
+
+	// the function call
+	foo(array, 4, "the message");
 
 	return EXIT_SUCCESS;
 }
